@@ -18,36 +18,36 @@ var confetti = {
 };
 
 
-	confetti.start = startConfetti;
-	confetti.stop = stopConfetti;
-	confetti.toggle = toggleConfetti;
-	confetti.pause = pauseConfetti;
-	confetti.resume = resumeConfetti;
-	confetti.togglePause = toggleConfettiPause;
-	confetti.isPaused = isConfettiPaused;
-	confetti.remove = removeConfetti;
-	confetti.isRunning = isConfettiRunning;
-	var supportsAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame;
-	var colors = ["rgba(30,144,255,", "rgba(107,142,35,", "rgba(255,215,0,", "rgba(255,192,203,", "rgba(106,90,205,", "rgba(173,216,230,", "rgba(238,130,238,", "rgba(152,251,152,", "rgba(70,130,180,", "rgba(244,164,96,", "rgba(210,105,30,", "rgba(220,20,60,"];
-	var streamingConfetti = false;
-	var animationTimer = null;
-	var pause = false;
-	var lastFrameTime = Date.now();
-	var particles = [];
-	var waveAngle = 0;
-	var context = null;
+confetti.start = startConfetti;
+confetti.stop = stopConfetti;
+confetti.toggle = toggleConfetti;
+confetti.pause = pauseConfetti;
+confetti.resume = resumeConfetti;
+confetti.togglePause = toggleConfettiPause;
+confetti.isPaused = isConfettiPaused;
+confetti.remove = removeConfetti;
+confetti.isRunning = isConfettiRunning;
+var supportsAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame;
+var colors = ["rgba(30,144,255,", "rgba(107,142,35,", "rgba(255,215,0,", "rgba(255,192,203,", "rgba(106,90,205,", "rgba(173,216,230,", "rgba(238,130,238,", "rgba(152,251,152,", "rgba(70,130,180,", "rgba(244,164,96,", "rgba(210,105,30,", "rgba(220,20,60,"];
+var streamingConfetti = false;
+var animationTimer = null;
+var pause = false;
+var lastFrameTime = Date.now();
+var particles = [];
+var waveAngle = 0;
+var context = null;
 
-	function resetParticle(particle, width, height) {
-		particle.color = colors[(Math.random() * colors.length) | 0] + (confetti.alpha + ")");
-		particle.color2 = colors[(Math.random() * colors.length) | 0] + (confetti.alpha + ")");
-		particle.x = Math.random() * width;
-		particle.y = Math.random() * height - height;
-		particle.diameter = Math.random() * 10 + 5;
-		particle.tilt = Math.random() * 10 - 10;
-		particle.tiltAngleIncrement = Math.random() * 0.07 + 0.05;
-		particle.tiltAngle = Math.random() * Math.PI;
-		return particle;
-	}
+function resetParticle(particle, width, height) {
+	particle.color = colors[(Math.random() * colors.length) | 0] + (confetti.alpha + ")");
+	particle.color2 = colors[(Math.random() * colors.length) | 0] + (confetti.alpha + ")");
+	particle.x = Math.random() * width;
+	particle.y = Math.random() * height - height;
+	particle.diameter = Math.random() * 10 + 5;
+	particle.tilt = Math.random() * 10 - 10;
+	particle.tiltAngleIncrement = Math.random() * 0.07 + 0.05;
+	particle.tiltAngle = Math.random() * Math.PI;
+	return particle;
+}
 
 function toggleConfettiPause() {
 	if (pause)
@@ -213,3 +213,4 @@ function updateParticles() {
 	}
 }
 
+export { startConfetti, stopConfetti, removeConfetti }
